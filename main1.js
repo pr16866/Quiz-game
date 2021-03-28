@@ -7,8 +7,7 @@ let arr=
       b: "B. HyperText and links Markup Language",
       c: "C. HyperText Markup Language",
       d: "D. None of these",
-    //   ans: "C. HyperText Markup Language",
-      ans: "c",
+      ans: "C. HyperText Markup Language",
       qno: "1"
     },
     {
@@ -98,53 +97,75 @@ let arr=
 
 
 let maincontainer=document.querySelector(".maincontainer");
-   
+     let h4=document.querySelectorAll("h4");
 let index=0;
+let flag=true;
+// ||||||||function for start quiz |||||||||
 function start_quiz(){
     let input=document.querySelector("input");
     let wrapper=document.querySelector(".wrapper");
-    
-    
-    localStorage.setItem("participent_name",input.value)
+     code=setInterval(fun1,1000);
+    h4[0].innerText=`Welcome! ${input.value}`
     if(input.value!=""){
+      localStorage.setItem("participent_name",input.value);
         wrapper.style.display="none";
         maincontainer.style.display="flex";
         show_quiz();
     }
-    
     else{
         alert("please write something");
     }
 }
+let second=60;
+let minutes=arr.length;
+// |||||||| function for time left ||||||||
+function fun1(){
+     if(second<10){
+    second=`0${second}`;
+  }
+   h4[1].innerText=`Time Left :- ${minutes} : ${second}`;
+  if(second==1)
+  { 
+    second=60;
+    minutes--; 
+  }
+  else if(minutes==0){
+   clearInterval(code);
+   finish();
+  }
+  else{
+     second--;
+  }
+}
+// ||||||| function for show quiz ||||||||
 function show_quiz(){
-
     let footer=document.querySelector(".footer");
     let html="";
-    html=`<ul>
+    html=`<ul class="animate__animated animate__rollIn">
     <h2 id="question">${arr[index].quetion}</h2>  
-  <li onclick="option(${arr[index].a})">${arr[index].a}</li>
-  <li onclick="option()">${arr[index].b}</li>
-  <li onclick="option()">${arr[index].c}</li>
-  <li onclick="option()">${arr[index].d}</li>
+  <li onclick="option(0,${index})">${arr[index].a}</li>
+  <li onclick="option(1,${index})">${arr[index].b}</li>
+  <li onclick="option(2,${index})">${arr[index].c}</li>
+  <li onclick="option(3,${index})">${arr[index].d}</li>
   <div class="button">
   <button id="next_question"onclick="next_question()">Next Question</button>
   <button id="finish"onclick="finish()">Submit</button>
-  <button id="previous_question" onclick="previous_question()">Previous Question</button>
 </div>
 </ul>`
 footer.innerHTML=html;
-}
+} 
+
+// ||||||||||| function for next question |||||||||
 function next_question(){
     if(index>=0&&index<arr.length-1){
         index++;
-    show_quiz();
+        flag=true;
+        flag1=true;
+      show_quiz();
     }  
 }
-function previous_question(){
-    if(index>0&&index<arr.length)
-    index--;
-    show_quiz();
-}
+
+// |||||||||| Function for submit ||||||||
 function finish(){
     let participent_name=localStorage.getItem("participent_name");
     let remark=document.querySelector(".remark");
@@ -153,9 +174,21 @@ function finish(){
     maincontainer.style.display="none";
     after_submission.style.display="flex";
     h2[0].innerText=`congrats ${participent_name} you got :-`
-    h2[1].innerText=`10 marks`;
+    h2[1].innerText=`${marks*10} marks`;
 }
+let marks=0;
+let flag1=true;
+// |||||||| function for option |||||||
+function option(var1,get_index){
+  let li=document.querySelectorAll("li");
 
-function option(var1){
-    console.log(var1);
+if(flag1){
+  li[var1].style.backgroundColor="	rgb(0, 128, 255)";
+  li[var1].style.color="white";
+}
+  if((li[var1].innerText==arr[get_index].ans) && (flag)){
+     marks++;
+   flag=false;
+  }
+flag1=false;
 }

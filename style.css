@@ -14,9 +14,10 @@
        display: flex;
        justify-content: center;
        align-items: center;
-       width: 100vw;
-       height: 100vh;
+       width: 90vw;
+       height: 90vh;
        background-color: #341f97;
+    overflow: hidden;
        /* display: none; */
        
    }
@@ -92,6 +93,8 @@
     font-size: 30px;
     padding: 15px;
     background-color: rgb(79, 79, 238);
+    border-bottom-left-radius: 30px;
+    border-top-left-radius:30px ;
 }
 .footer ul li{
     list-style: none;
@@ -102,8 +105,9 @@
     height: 50px;
     border-radius: 50px;
     border: 5px solid transparent;
+    background-color: white;
     cursor: pointer;
-    transition: all 0.2s;
+   
 }
 
 .footer ul{

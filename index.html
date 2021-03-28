@@ -1,16 +1,20 @@
-<!DOCTYPE html>)
+<!DOCTYPE html>
 <html lang="en">
- <link rel="stylesheet" href="style.css">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+     <link rel="stylesheet" href="style.css">
     <title>Quiz Game</title>
 </head>
 
 <body>
     <!-- html for front page -->
-    <div class="wrapper"id="wrapper">
+    <div class="wrapper animate__animated animate__rollIn"id="wrapper">
         <div class="welcom_text">
             <form action="" class="welcome_form">
                 <input type="text" id="welcome" placeholder="Enter Your Name">
@@ -22,11 +26,11 @@
 
 <!-- html for question -->
     
-    <div class="maincontainer" id="maincontainer">
+    <div class="maincontainer animate__animated animate__rollIn" id="maincontainer">
         <div class="container">
             <div class="nav">
                 <h4 id="p_name"></h4>
-                <h4 id="time"><span id="minute"></span></h4>
+                <h4 id="time"></h4>
             </div>
 
             <div class="footer">
@@ -38,22 +42,13 @@
 
 <!-- html for result -->
 
-
-
-
-    <div class="after_submission" id="after_submission">
+    <div class="after_submission animate__animated animate__backInDown" id="after_submission">
         <div class="remark">
                <h2 id="remark">your remarks</h2>
                 <h2 id="marks"></h2>
         </div>
     </div>
-
-
-  
     <script src="main1.js"></script>
-    <!-- <script src="index.js"type="module"></script> -->
-       
-
 </body>
 
 </html>
